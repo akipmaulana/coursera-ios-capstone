@@ -16,6 +16,9 @@
 		DA74871F29E3138D00F56216 /* ios_capstoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74871E29E3138D00F56216 /* ios_capstoneTests.swift */; };
 		DA74872929E3138D00F56216 /* ios_capstoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74872829E3138D00F56216 /* ios_capstoneUITests.swift */; };
 		DA74872B29E3138D00F56216 /* ios_capstoneUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74872A29E3138D00F56216 /* ios_capstoneUITestsLaunchTests.swift */; };
+		DA74873929E3147F00F56216 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74873829E3147F00F56216 /* HomeScreen.swift */; };
+		DA74873C29E315FD00F56216 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74873B29E315FD00F56216 /* Color+Hex.swift */; };
+		DA74873F29E335F600F56216 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74873E29E335F600F56216 /* FoodItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		DA74872429E3138D00F56216 /* ios-capstoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-capstoneUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA74872829E3138D00F56216 /* ios_capstoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_capstoneUITests.swift; sourceTree = "<group>"; };
 		DA74872A29E3138D00F56216 /* ios_capstoneUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_capstoneUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DA74873829E3147F00F56216 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		DA74873B29E315FD00F56216 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		DA74873E29E335F600F56216 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +104,9 @@
 		DA74870729E3138900F56216 /* ios-capstone */ = {
 			isa = PBXGroup;
 			children = (
+				DA74873D29E335DD00F56216 /* View */,
+				DA74873A29E315E500F56216 /* Helper */,
+				DA74873729E3146100F56216 /* Screens */,
 				DA74870829E3138900F56216 /* ios_capstoneApp.swift */,
 				DA74870A29E3138900F56216 /* ContentView.swift */,
 				DA74870C29E3138C00F56216 /* Assets.xcassets */,
@@ -131,6 +140,30 @@
 				DA74872A29E3138D00F56216 /* ios_capstoneUITestsLaunchTests.swift */,
 			);
 			path = "ios-capstoneUITests";
+			sourceTree = "<group>";
+		};
+		DA74873729E3146100F56216 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				DA74873829E3147F00F56216 /* HomeScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		DA74873A29E315E500F56216 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				DA74873B29E315FD00F56216 /* Color+Hex.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		DA74873D29E335DD00F56216 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA74873E29E335F600F56216 /* FoodItem.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,10 +296,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA74873F29E335F600F56216 /* FoodItem.swift in Sources */,
 				DA74871529E3138C00F56216 /* ios_capstone.xcdatamodeld in Sources */,
+				DA74873929E3147F00F56216 /* HomeScreen.swift in Sources */,
 				DA74871229E3138C00F56216 /* Persistence.swift in Sources */,
 				DA74870B29E3138900F56216 /* ContentView.swift in Sources */,
 				DA74870929E3138900F56216 /* ios_capstoneApp.swift in Sources */,
+				DA74873C29E315FD00F56216 /* Color+Hex.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

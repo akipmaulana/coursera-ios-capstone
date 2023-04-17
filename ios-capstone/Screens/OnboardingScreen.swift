@@ -7,13 +7,22 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct OnboardingScreen: View {
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \AppState.onboarding, ascending: true)],
+        animation: .default)
+    private var state: FetchedResults<AppState>
     
     @State private var firstname: String = ""
     @State private var lastname: String = ""
     @State private var email: String = ""
     @State private var phoneNumber: String = ""
+    @State private var navigate: Bool = false
     
     var body: some View {
         NavigationView {
@@ -72,13 +81,36 @@ struct OnboardingScreen: View {
                             .padding(.horizontal, 16)
                     }
                     
-                    NavigationLink {
+                    NavigationLink(isActive: $navigate) {
                         HomeScreen()
                     } label: {
-                        Text("Save & Next")
-                            .font(.title2)
-                            .foregroundColor(Color(hex: "F4CE14"))
-                            .padding(.vertical, 8)
+                        Button {
+                            deleteAllState()
+                            
+                            let state = AppState(context: viewContext)
+                            state.onboarding = true
+                            
+                            let user = User(context: viewContext)
+                            user.email = email
+                            user.firstname = firstname
+                            user.lastname = lastname
+                            user.phone = phoneNumber
+
+                            do {
+                                try viewContext.save()
+                                navigate = true
+                            } catch {
+                                let nsError = error as NSError
+                                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                            }
+                            
+                        } label: {
+                            Text("Save & Next")
+                                .font(.title2)
+                                .foregroundColor(Color(hex: "F4CE14"))
+                                .padding(.vertical, 8)
+                        }
+
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color(hex: "495E57"))
@@ -86,6 +118,15 @@ struct OnboardingScreen: View {
                 
             }
         }
+        .task {
+            navigate = state.first?.onboarding ?? false
+        }
+    }
+    
+    private func deleteAllState() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = AppState.fetchRequest()
+        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try? viewContext.execute(batchDelete)
     }
 }
 

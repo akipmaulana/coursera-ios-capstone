@@ -15,6 +15,7 @@ struct ios_capstoneApp: App {
     var body: some Scene {
         WindowGroup {
             OnboardingScreen()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

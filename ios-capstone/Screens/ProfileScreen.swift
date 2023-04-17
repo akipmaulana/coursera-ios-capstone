@@ -7,10 +7,18 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ProfileScreen: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \User.email, ascending: true)],
+        animation: .default)
+    private var user: FetchedResults<User>
     
     @State private var firstname: String = ""
     @State private var lastname: String = ""
@@ -139,7 +147,10 @@ struct ProfileScreen: View {
                         .padding(.vertical, 16)
                         
                         Button {
-                            
+                            deleteAllUser()
+                            deleteAllState()
+
+                            NavigationUtil.popToRootView()
                         } label: {
                             Text("Log out")
                                 .foregroundColor(.black)
@@ -152,7 +163,10 @@ struct ProfileScreen: View {
                         
                         HStack {
                             Button {
-                                
+                                firstname = user.first?.firstname ?? ""
+                                lastname = user.first?.lastname ?? ""
+                                phoneNumber = user.first?.phone ?? ""
+                                email = user.first?.email ?? ""
                             } label: {
                                 Text("Discard Changes")
                                     .foregroundColor(.gray)
@@ -166,7 +180,17 @@ struct ProfileScreen: View {
                             })
                             
                             Button {
+                                deleteAllUser()
                                 
+                                let user = User(context: viewContext)
+                                user.email = email
+                                user.firstname = firstname
+                                user.lastname = lastname
+                                user.phone = phoneNumber
+                                
+                                try? viewContext.save()
+                                
+                                presentationMode.wrappedValue.dismiss()
                             } label: {
                                 Text("Save Changes")
                                     .foregroundColor(.white)
@@ -179,9 +203,6 @@ struct ProfileScreen: View {
                         }
                         .padding(.vertical, 16)
                         
-                        
-
-                        
                     }
                     .padding(.horizontal, 16)
                 }
@@ -192,6 +213,24 @@ struct ProfileScreen: View {
             
         }
         .navigationBarBackButtonHidden()
+        .task {
+            firstname = user.first?.firstname ?? ""
+            lastname = user.first?.lastname ?? ""
+            phoneNumber = user.first?.phone ?? ""
+            email = user.first?.email ?? ""
+        }
+    }
+    
+    private func deleteAllUser() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = User.fetchRequest()
+        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try? viewContext.execute(batchDelete)
+    }
+    
+    private func deleteAllState() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = AppState.fetchRequest()
+        let batchDelete = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try? viewContext.execute(batchDelete)
     }
 }
 
@@ -267,5 +306,24 @@ struct PersonalInformationPreferrences: View {
             
             Text(title)
         }
+    }
+}
+
+struct NavigationUtil {
+    static func popToRootView() {
+        findNavigationController(viewController: UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.rootViewController)?
+            .popToRootViewController(animated: true)
+    }
+static func findNavigationController(viewController: UIViewController?) -> UINavigationController? {
+        guard let viewController = viewController else {
+            return nil
+        }
+if let navigationController = viewController as? UINavigationController {
+            return navigationController
+        }
+for childViewController in viewController.children {
+            return findNavigationController(viewController: childViewController)
+        }
+return nil
     }
 }

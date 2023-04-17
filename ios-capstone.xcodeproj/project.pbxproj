@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA159F9D29ED123900A06AFF /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA159F9C29ED123900A06AFF /* ProfileScreen.swift */; };
 		DA74870929E3138900F56216 /* ios_capstoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74870829E3138900F56216 /* ios_capstoneApp.swift */; };
 		DA74870B29E3138900F56216 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74870A29E3138900F56216 /* ContentView.swift */; };
 		DA74870D29E3138C00F56216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA74870C29E3138C00F56216 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 		DA74873929E3147F00F56216 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74873829E3147F00F56216 /* HomeScreen.swift */; };
 		DA74873C29E315FD00F56216 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74873B29E315FD00F56216 /* Color+Hex.swift */; };
 		DA74873F29E335F600F56216 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA74873E29E335F600F56216 /* FoodItem.swift */; };
+		DAA3971629EC5EBC00143068 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA3971529EC5EBC00143068 /* OnboardingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA159F9C29ED123900A06AFF /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		DA74870529E3138900F56216 /* ios-capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-capstone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA74870829E3138900F56216 /* ios_capstoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_capstoneApp.swift; sourceTree = "<group>"; };
 		DA74870A29E3138900F56216 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		DA74873829E3147F00F56216 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		DA74873B29E315FD00F56216 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		DA74873E29E335F600F56216 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
+		DAA3971529EC5EBC00143068 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				DA74873829E3147F00F56216 /* HomeScreen.swift */,
+				DAA3971529EC5EBC00143068 /* OnboardingScreen.swift */,
+				DA159F9C29ED123900A06AFF /* ProfileScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -300,6 +306,8 @@
 				DA74871529E3138C00F56216 /* ios_capstone.xcdatamodeld in Sources */,
 				DA74873929E3147F00F56216 /* HomeScreen.swift in Sources */,
 				DA74871229E3138C00F56216 /* Persistence.swift in Sources */,
+				DA159F9D29ED123900A06AFF /* ProfileScreen.swift in Sources */,
+				DAA3971629EC5EBC00143068 /* OnboardingScreen.swift in Sources */,
 				DA74870B29E3138900F56216 /* ContentView.swift in Sources */,
 				DA74870929E3138900F56216 /* ios_capstoneApp.swift in Sources */,
 				DA74873C29E315FD00F56216 /* Color+Hex.swift in Sources */,
